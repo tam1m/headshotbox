@@ -24,14 +24,14 @@
 (defn- fade-to-black [tick]
   {:factory   "ScreenFadeStart"
    :tick      tick
-   :duration  "1.000"
-   :holdtime  "1.000"
-   :FFADE_IN  "1"
-   :FFADE_OUT "1"
+   :duration  "0.000"
+   :holdtime  "0.000"
+   :FFADE_IN  "0"
+   :FFADE_OUT "0"
    :r         "0"
    :g         "0"
    :b         "0"
-   :a         "255"
+   :a         "0"
    })
 
 (defn- generate-highlight-enemy-pov [demo kill]
