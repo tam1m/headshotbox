@@ -51,9 +51,11 @@
                       {:factory  "PlayCommands"
                        :tick     (max (- (:tick kill) kill-context) (:tick-before kill))
                        :commands (str "spec_player_by_accountid " (:victim kill))})
-        (append-maybe
-          (> (- (:tick-after kill) (:tick kill)) (sec-to-tick demo 1))
-          (fade-to-black (:tick kill))))))
+;        (append-maybe
+;          (> (- (:tick-after kill) (:tick kill)) (sec-to-tick demo 1))
+;          (fade-to-black (:tick kill)))
+          
+          )))
 
 (defn- vdm-highlights [demo steamid]
   (let [killed-by-steamid (fn [kill] (= steamid (:attacker kill)))
@@ -85,8 +87,9 @@
         :commands (if (:vdm_quit_after_playback (db/get-config))
                     "quit"
                     "disconnect")}]
-      [(fade-to-black (- tick-jump (sec-to-tick demo 1)))
-       {:factory    "SkipAhead"
+;      [(fade-to-black (- tick-jump (sec-to-tick demo 1)))
+
+        [{:factory    "SkipAhead"
         :tick       tick-jump
         :skiptotick (+ (:next-round-tick round) (sec-to-tick demo 15))
         }])))
